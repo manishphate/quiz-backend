@@ -4,13 +4,12 @@ import cookieParser from 'cookie-parser'
 
 const app = express()
 
-app.use(cors({
-    origin: (origin, callback) => {
-        // Allow requests from any origin
-        callback(null, true);
-    },
-    credentials: true
-}))
+const corsOptions = {
+  origin: 'https://main--quiz-619.netlify.app',
+  credentials: true, // Enable credentials (cookies)
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json({limit: "16kb"}))
 app.use(express.urlencoded({extended: true, limit:"16kb"}))
