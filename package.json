@@ -5,7 +5,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "start": "node -r dotenv/config --experimental-json-modules src/index.js\""
+    "start": "node -r dotenv/config --experimental-json-modules src/index.js\"",
+    "build": "react-scripts build"
   },
   "keywords": [
     "backend"
