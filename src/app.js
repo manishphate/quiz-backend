@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser'
 const app = express()
 
 const corsOptions = {
-  origin: 'https://main--quiz-619.netlify.app',
+  origin: 'https://quiz-619.netlify.app',
   credentials: true, // Enable credentials (cookies)
 };
 
