@@ -72,7 +72,10 @@ const registerUser = asyncHandler(async (req, res, next) => {
 
     const options = {
         httpOnly: true,
-        secure: true
+        sameSite: 'none',
+        secure: true,  
+        path: '/',       
+        domain: '.main--quiz-619.netlify.app', 
     }
 
     return res
@@ -127,8 +130,11 @@ const loginUser = asyncHandler(async (req, res) => {
     const loggedInUser = await User.findById(user._id).select("-password -refreshToken")
 
     const options = {
-        httpOnly: true,
-        secure: true
+         httpOnly: true,
+        sameSite: 'none',
+        secure: true,  
+        path: '/',       
+        domain: '.main--quiz-619.netlify.app', 
     }
 
     return res
@@ -164,7 +170,10 @@ const logoutUser = asyncHandler(async (req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: true
+        sameSite: 'none',
+        secure: true,  
+        path: '/',       
+        domain: '.main--quiz-619.netlify.app', 
     }
 
     return res
@@ -200,8 +209,11 @@ const refreshAccessToken = asyncHandler(async (req, res) => {
         }
 
         const options = {
-            httpOnly: true,
-            secure: true
+        httpOnly: true,
+        sameSite: 'none',
+        secure: true,  
+        path: '/',       
+        domain: '.main--quiz-619.netlify.app', 
         }
 
         const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(user._id)
@@ -258,7 +270,7 @@ const forgotPassword = asyncHandler(async (req, res) => {
         from: process.env.ADMIN_EMAIL,
         to: email,
         subject: 'Reset your password',
-        text: `http://localhost:3000/reset-password/${user._id}/${token}`
+        text: `https://main--quiz-619.netlify.app/reset-password/${user._id}/${token}`
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
