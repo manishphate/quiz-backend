@@ -42,7 +42,7 @@ import { User } from "../models/user.js";
 
 export const verifyJWT = asyncHandler(async (req, res, next) => {
     try {
-               const cookieString = req.headers?.cookie || req.header("Authorization")?.replace("Bearer ", "") // Get the cookie string from the request headers
+               const cookieString = req.headers?.cookie // Get the cookie string from the request headers
         const cookies = cookieString.split(';'); // Split the cookie string into an array based on the separator ';'
         let accessToken, refreshToken;
     
