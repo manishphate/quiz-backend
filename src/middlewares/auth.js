@@ -7,7 +7,23 @@ import { User } from "../models/user.js";
 // export const verifyJWT = asyncHandler(async (req, res, next) => {
 
 //     try {
-//         const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
+
+       const cookieString = req.headers.cookie; // Get the cookie string from the request headers
+        const cookies = cookieString.split(';'); // Split the cookie string into an array based on the separator ';'
+        let accessToken, refreshToken;
+    
+        cookies.forEach(cookie => {
+            const trimmedCookie = cookie.trim(); // Remove any leading/trailing whitespace
+            if (trimmedCookie.startsWith('accessToken=')) {
+                accessToken = trimmedCookie.substring('accessToken='.length); // Extract the accessToken value
+            } else if (trimmedCookie.startsWith('refreshToken=')) {
+                refreshToken = trimmedCookie.substring('refreshToken='.length); // Extract the refreshToken value
+            }
+        });
+    
+        console.log(accessToken);
+        const token = accessToken || req.header("Authorization")?.replace("Bearer ", "")
+      //  const token = req.cookies?.accessToken || req.header("Authorization")?.replace("Bearer ", "")
 
 //         if (!token) {
 //             // throw new ApiError(401, "Unauthorized request")
