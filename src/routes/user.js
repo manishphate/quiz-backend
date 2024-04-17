@@ -10,7 +10,7 @@ userRouter.route("/login").post(loginUser)
 
 userRouter.route("/logout").post(verifyJWT, logoutUser)
 userRouter.route("/refresh-token").post(refreshAccessToken)
-userRouter.route("/current-user").get(verifyJWT, getCurrentUser)
+userRouter.route("/current-user").post(verifyJWT, getCurrentUser)
 userRouter.route("/forgot-password").post(forgotPassword)
 userRouter.route("/reset-password/:id/:token").post(resetPassword)
 
